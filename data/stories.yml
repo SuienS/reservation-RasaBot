@@ -1,6 +1,106 @@
 version: "2.0"
 
 stories:
+- story: hotel location affirm
+  steps:
+  - intent: know_location
+  - action: utter_location
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: hotel location deny
+  steps:
+  - intent: know_location
+  - action: utter_location
+  - intent: deny
+  - action: utter_giveup
+
+- story: greet hotel location
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: know_location
+  - action: utter_location
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: book location and room success
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: know_location
+  - action: utter_location
+  - intent: book_room
+    entities:
+    - location: room
+  - action: utter_which_room_type
+  - action: form_book_room
+  - active_loop: form_book_room
+  - active_loop: null
+  - action: action_reset_slots
+  - action: utter_completion
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: book room success
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_room
+    entities:
+    - location: room
+  - action: utter_which_room_type
+  - action: form_book_room
+  - active_loop: form_book_room
+  - active_loop: null
+  - action: action_reset_slots
+  - action: utter_completion
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: book room deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_room
+    entities:
+    - location: room
+  - action: utter_which_room_type
+  - action: form_book_room
+  - active_loop: form_book_room
+  - active_loop: null
+  - action: action_reset_slots
+  - action: utter_completion
+  - intent: deny
+  - action: utter_giveup
+
+- story: direct book room success
+  steps:
+  - intent: book_room
+    entities:
+    - location: room
+  - action: utter_which_room_type
+  - action: form_book_room
+  - active_loop: form_book_room
+  - active_loop: null
+  - action: action_reset_slots
+  - action: utter_completion
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: direct book room deny
+  steps:
+  - intent: book_room
+    entities:
+    - location: room
+  - action: utter_which_room_type
+  - action: form_book_room
+  - active_loop: form_book_room
+  - active_loop: null
+  - action: action_reset_slots
+  - action: utter_completion
+  - intent: deny
+  - action: utter_giveup
 
 - story: happy path
   steps:

@@ -1,6 +1,31 @@
 version: "2.0"
 
 nlu:
+- intent: book_room
+  examples: |
+    - i want a book a [room](location) for my stay
+    - I want to book a [room](location)
+    - i want to book a [room](location)
+    - i would like to book a [room](location)
+    - need a [room](location)
+    - can you book a [room](location)?
+    - book [room](location)
+    - book the [room](location)
+    - book a [room](location)
+    - Book a [Room](location)    
+    - book [room](location)
+    - Book [Room](location)
+    - Book [room](location) for my stay
+
+- intent: type_select_room
+  examples: |
+    - [Simple](room_type)
+    - [Deluxe](room_type)
+    - [Simple](room_type) would be great
+    - [Deluxe](room_type) would be great
+    - [Simple](room_type) is fine
+    - [Deluxe](room_type) is fine
+
 - intent: greet
   examples: |
     - hey
@@ -39,6 +64,8 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - ok
+    - okay
 
 - intent: deny
   examples: |
@@ -49,6 +76,7 @@ nlu:
     - don't like that
     - no way
     - not really
+    - too bad
 
 - intent: mood_great
   examples: |
@@ -90,3 +118,32 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: know_location
+  examples: |
+    - where is this?
+    - where is this hotel situated at?
+    - situated at?
+    - whats the location?
+    - location?
+    - can i know the location?
+    - what is the room location?
+    - what is the hotel location?
+
+- synonym: room
+  examples: |
+    - rooms
+    - Room
+    - Rooms
+
+- synonym: Deluxe
+  examples: |
+    - deluxe
+    - delux
+    - Delux
+
+- synonym: Simple
+  examples: |
+    - simple
+    - simpl
+    - Simpl

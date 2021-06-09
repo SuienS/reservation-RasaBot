@@ -8,10 +8,21 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - know_location
+  - book_room
+  - type_select_room
+
+entities:
+  - location
+  - room_type
+
+slots:
+  room_type:
+    type: unfeaturized
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! How can I help you?"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -26,8 +37,32 @@ responses:
   utter_goodbye:
   - text: "Bye"
 
+  utter_giveup:
+  - text: "Then I guess, there nothing much I can do 😕"
+
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_deny_message:
+  - text: How can I help you?
+
+  utter_which_room_type:
+  - text: Whats the room type you need? We have 'Deluxe' and 'Simple' types
+
+  utter_completion:
+  - text: Anything else?
+
+  utter_location:
+  - text: We are at 777, Heaven's road, Wonderland.
+
+  utter_room_booked:
+  - text: 'Your room has been booked from {room_type} room type.'
+
+forms:
+- form_book_room
+
+actions:
+- action_reset_slots
 
 session_config:
   session_expiration_time: 60
