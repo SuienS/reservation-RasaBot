@@ -24,7 +24,19 @@ nlu:
     - [Simple](room_type) would be great
     - [Deluxe](room_type) would be great
     - [Simple](room_type) is fine
-    - [Deluxe](room_type) is fine
+    - A [Deluxe](room_type) room is fine    
+    - A [Simple](room_type) room is fine
+
+- intent: introduce
+  examples: |
+    - [Ravidu](user_name)
+    - [Ravidu](user_name) is my name
+    - I'm [Ravidu](user_name)
+    - I am [Ravidu](user_name)
+    - i am [Ravidu](user_name)
+    - im [Ravidu](user_name)
+    - my name is [Ravidu](user_name)
+    - name [Ravidu](user_name) 
 
 - intent: greet
   examples: |
@@ -147,3 +159,8 @@ nlu:
     - simple
     - simpl
     - Simpl
+
+- synonym: Ravidu
+  examples: |
+    - ravidu
+    - RAVIDU

@@ -1,8 +1,20 @@
 version: "2.0"
 
 stories:
+- story: name deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: deny
+  - action: utter_giveup
+
 - story: hotel location affirm
   steps:
+  - intent: greet
+  - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: know_location
   - action: utter_location
   - intent: affirm
@@ -10,6 +22,11 @@ stories:
 
 - story: hotel location deny
   steps:
+  - intent: greet
+  - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: know_location
   - action: utter_location
   - intent: deny
@@ -19,6 +36,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: know_location
   - action: utter_location
   - intent: affirm
@@ -28,6 +48,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: know_location
   - action: utter_location
   - intent: book_room
@@ -46,6 +69,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: book_room
     entities:
     - location: room
@@ -62,6 +88,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: book_room
     entities:
     - location: room
@@ -74,38 +103,41 @@ stories:
   - intent: deny
   - action: utter_giveup
 
-- story: direct book room success
-  steps:
-  - intent: book_room
-    entities:
-    - location: room
-  - action: utter_which_room_type
-  - action: form_book_room
-  - active_loop: form_book_room
-  - active_loop: null
-  - action: action_reset_slots
-  - action: utter_completion
-  - intent: affirm
-  - action: utter_goodbye
+# - story: direct book room success
+#   steps:
+#   - intent: book_room
+#     entities:
+#     - location: room
+#   - action: utter_which_room_type
+#   - action: form_book_room
+#   - active_loop: form_book_room
+#   - active_loop: null
+#   - action: action_reset_slots
+#   - action: utter_completion
+#   - intent: affirm
+#   - action: utter_goodbye
 
-- story: direct book room deny
-  steps:
-  - intent: book_room
-    entities:
-    - location: room
-  - action: utter_which_room_type
-  - action: form_book_room
-  - active_loop: form_book_room
-  - active_loop: null
-  - action: action_reset_slots
-  - action: utter_completion
-  - intent: deny
-  - action: utter_giveup
+# - story: direct book room deny
+#   steps:
+#   - intent: book_room
+#     entities:
+#     - location: room
+#   - action: utter_which_room_type
+#   - action: form_book_room
+#   - active_loop: form_book_room
+#   - active_loop: null
+#   - action: action_reset_slots
+#   - action: utter_completion
+#   - intent: deny
+#   - action: utter_giveup
 
 - story: happy path
   steps:
   - intent: greet
   - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: mood_great
   - action: utter_happy
 
@@ -113,6 +145,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: mood_unhappy
   - action: utter_cheer_up
   - action: utter_did_that_help
@@ -123,6 +158,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: form_user_name
+  - active_loop: form_user_name
+  - active_loop: null
   - intent: mood_unhappy
   - action: utter_cheer_up
   - action: utter_did_that_help

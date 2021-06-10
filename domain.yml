@@ -11,18 +11,25 @@ intents:
   - know_location
   - book_room
   - type_select_room
+  - introduce
 
 entities:
   - location
   - room_type
+  - user_name
 
 slots:
   room_type:
     type: unfeaturized
+  user_name:
+    type: unfeaturized
 
 responses:
   utter_greet:
-  - text: "Hey! How can I help you?"
+  - text: "Hey! What is your name?"
+
+  utter_welcome_user:
+  - text: 'Hello, {user_name} Welcome to RasaBot. How can I help you?'
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -50,7 +57,7 @@ responses:
   - text: Whats the room type you need? We have 'Deluxe' and 'Simple' types
 
   utter_completion:
-  - text: Anything else?
+  - text: So all good?
 
   utter_location:
   - text: We are at 777, Heaven's road, Wonderland.
@@ -60,8 +67,10 @@ responses:
 
 forms:
 - form_book_room
+- form_user_name
 
 actions:
+# - action_get_user_name
 - action_reset_slots
 
 session_config:

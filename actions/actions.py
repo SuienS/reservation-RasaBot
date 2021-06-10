@@ -4,6 +4,7 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 
+# [rasa run actions] <= on console to activate endpoint
 
 # This is a simple example for a custom action which utters "Hello World!"
 
@@ -54,6 +55,35 @@ class BookRoomInfo(FormAction):
         return {
             "room_type": self.from_entity(entity="room_type", intent="type_select_room")
         }
+
+
+class GetUserName(FormAction):
+    def name(self) -> Text:
+        return "form_user_name"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        return ["user_name"]
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+
+        # utter submit template
+        dispatcher.utter_message(template="utter_welcome_user",
+                                 room_type=tracker.get_slot('user_name'))
+        return []
+
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+
+        return {
+            "user_name": self.from_entity(entity="user_name", intent="introduce")
+        }
+
+# class GetUserName(Action):
 
 class ResetSlots(Action):
 
